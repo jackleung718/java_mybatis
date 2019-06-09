@@ -3,6 +3,8 @@
 #### 项目介绍
 SpringBoot整合MyBatis-Plus3.1示例
 
+相关文章请移步到:https://juejin.im/post/5cfa6e465188254ee433bc69
+
 MyBatis-Plus版本: 3.1.0
 
 SpringBoot版本:2.1.5
