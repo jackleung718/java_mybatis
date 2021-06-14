@@ -1,5 +1,8 @@
 package com.mp.demo.serivce;
 
+import java.text.ParseException;
+import java.util.List;
+
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.mp.demo.entity.UserInfoEntity;
@@ -25,9 +28,9 @@ public interface UserInfoService {
 	
     IPage<UserInfoEntity> selectUserInfoByGtFraction(IPage<UserInfoEntity> page,Long fraction);
     
-    UserInfoEntity insertById(UserInfoEntity user);
+    UserInfoEntity insertById(UserInfoEntity user) throws ParseException;
 
     UserInfoEntity updateById2(UserInfoEntity user);
 
-	UserInfoEntity selectByAge(int age);
+    List<UserInfoEntity> selectByAge(int age);
 }

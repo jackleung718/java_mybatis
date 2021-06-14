@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,9 +51,10 @@ public class UserInfoPlusController {
     }
     
     @RequestMapping("/insertById")
-    public UserInfoEntity insertById(@RequestBody UserInfoEntity user){
+    public UserInfoEntity insertById(@RequestBody UserInfoEntity user) throws ParseException{
         //查询大于60分以上的学生,并且分页
-         userInfoService.insertById(user);
+         
+    	userInfoService.insertById(user);
 System.out.println("success insert..");
         return null;
     }
@@ -76,11 +79,12 @@ return null;
     }
     
     @RequestMapping("/selectByAge")
-    public UserInfoEntity selectByAge(@RequestBody  UserInfoEntity user){
-System.out.println(user.toString()+ " ......");    	
-    	UserInfoEntity user2 =        userInfoService.selectByAge(user.getAge());
-System.out.println("success get sucess.....");
+    public List<UserInfoEntity> selectByAge(@RequestBody  UserInfoEntity user){
+ List<UserInfoEntity> user2 =        userInfoService.selectByAge(user.getAge());
+ System.out.println("success get sucess.....");
 return user2;
     }
+    
+    
     
 }

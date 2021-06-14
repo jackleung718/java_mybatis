@@ -8,7 +8,10 @@ import com.mp.demo.dao.UserInfoDao;
 import com.mp.demo.entity.UserInfoEntity;
 import com.mp.demo.serivce.UserInfoService;
 
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -44,7 +47,16 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDao, UserInfoEntity
 
 	@Override
 	public UserInfoEntity insertById(UserInfoEntity user) {
-		System.out.println(user.toString());
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date parsed;
+		try {
+			 parsed = format.parse("2020-07-18 20:22:33");
+			 user.setCreatetime(parsed);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			System.out.println("cant insert time");
+			e.printStackTrace();
+		}
 		baseMapper.insert(user);
 		return null;
 	}
@@ -57,11 +69,24 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDao, UserInfoEntity
 	}
 
 	@Override
-	public UserInfoEntity selectByAge(int age) {
+	public List<UserInfoEntity> selectByAge(int age) {
 		// TODO Auto-generated method stub
 		   LambdaQueryWrapper<UserInfoEntity> roleWrapper = Wrappers.lambdaQuery();
 	        roleWrapper.eq(UserInfoEntity::getAge, age);
-	        UserInfoEntity user = baseMapper.selectOne(roleWrapper);
+	        
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        Date parsed;
+			try {
+				 parsed = format.parse("2021-07-18 20:22:33");
+				  roleWrapper.lt(UserInfoEntity::getCreatetime, parsed);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				System.out.println("cant insert time");
+				e.printStackTrace();
+			}
+	      
+
+	        List<UserInfoEntity> user = baseMapper.selectList(roleWrapper);
 		return user;
 	};
 	
