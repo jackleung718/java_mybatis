@@ -29,4 +29,11 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDao, UserInfoEntity
     public IPage<UserInfoEntity> selectUserInfoByGtFraction(IPage<UserInfoEntity> page, Long fraction) {
         return this.baseMapper.selectUserInfoByGtFraction(page,fraction);
     }
+
+	@Override
+	public UserInfoEntity get_By_Id(String id) {
+		// TODO Auto-generated method stub
+		return baseMapper.selectById(id);
+		
+	}
 }

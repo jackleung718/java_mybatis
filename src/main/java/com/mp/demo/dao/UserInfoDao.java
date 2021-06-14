@@ -1,5 +1,7 @@
 package com.mp.demo.dao;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.mp.demo.entity.UserInfoEntity;
@@ -19,5 +21,5 @@ public interface UserInfoDao extends BaseMapper<UserInfoEntity> {
      * @Param  fraction  分数
      * @Return IPage<UserInfoEntity> 分页数据
      */
-    IPage<UserInfoEntity> selectUserInfoByGtFraction(IPage<UserInfoEntity> page, Long fraction);
+    IPage<UserInfoEntity> selectUserInfoByGtFraction(IPage<UserInfoEntity> page,  @Param("fraction")Long fraction);
 }

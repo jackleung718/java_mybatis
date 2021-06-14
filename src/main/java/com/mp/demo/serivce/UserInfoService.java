@@ -10,7 +10,7 @@ import com.mp.demo.entity.UserInfoEntity;
  * @Author Sans
  * @CreateTime 2019/6/8 16:26
  */
-public interface UserInfoService extends IService<UserInfoEntity> {
+public interface UserInfoService {
 
     /**
      * 查询大于该分数的学生
@@ -20,5 +20,8 @@ public interface UserInfoService extends IService<UserInfoEntity> {
      * @Param  fraction  分数
      * @Return IPage<UserInfoEntity> 分页数据
      */
+	
+	UserInfoEntity get_By_Id(String id);
+	
     IPage<UserInfoEntity> selectUserInfoByGtFraction(IPage<UserInfoEntity> page,Long fraction);
 }
