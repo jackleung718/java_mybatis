@@ -1,10 +1,15 @@
 package com.mp.demo.serivce.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.mp.demo.dao.UserInfoDao;
 import com.mp.demo.entity.UserInfoEntity;
 import com.mp.demo.serivce.UserInfoService;
+
+
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,4 +41,29 @@ public class UserInfoServiceImpl extends ServiceImpl<UserInfoDao, UserInfoEntity
 		return baseMapper.selectById(id);
 		
 	}
+
+	@Override
+	public UserInfoEntity insertById(UserInfoEntity user) {
+		System.out.println(user.toString());
+		baseMapper.insert(user);
+		return null;
+	}
+	
+	
+	@Override
+	public UserInfoEntity updateById2(UserInfoEntity user) {
+		baseMapper.updateById(user);
+		return null;
+	}
+
+	@Override
+	public UserInfoEntity selectByAge(int age) {
+		// TODO Auto-generated method stub
+		   LambdaQueryWrapper<UserInfoEntity> roleWrapper = Wrappers.lambdaQuery();
+	        roleWrapper.eq(UserInfoEntity::getAge, age);
+	        UserInfoEntity user = baseMapper.selectOne(roleWrapper);
+		return user;
+	};
+	
+	
 }

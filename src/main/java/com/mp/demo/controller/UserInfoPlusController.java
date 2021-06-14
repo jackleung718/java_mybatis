@@ -8,6 +8,7 @@ import com.mp.demo.serivce.UserInfoService;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
@@ -47,6 +48,23 @@ public class UserInfoPlusController {
         return news;
     }
     
+    @RequestMapping("/insertById")
+    public UserInfoEntity insertById(@RequestBody UserInfoEntity user){
+        //查询大于60分以上的学生,并且分页
+         userInfoService.insertById(user);
+System.out.println("success insert..");
+        return null;
+    }
+    
+    
+    @RequestMapping("/updateById")
+    public UserInfoEntity updateById(@RequestBody UserInfoEntity user){
+        //查询大于60分以上的学生,并且分页
+         userInfoService.updateById2(user);
+System.out.println("success update.....");
+return null;
+    }
+    
     @RequestMapping("/getInfoListSQL")
     public IPage<UserInfoEntity> getInfoListSQL(){
         //查询大于60分以上的学生,并且分页
@@ -56,4 +74,13 @@ public class UserInfoPlusController {
         page = userInfoService.selectUserInfoByGtFraction(page,60L);
         return page;
     }
+    
+    @RequestMapping("/selectByAge")
+    public UserInfoEntity selectByAge(@RequestBody  UserInfoEntity user){
+System.out.println(user.toString()+ " ......");    	
+    	UserInfoEntity user2 =        userInfoService.selectByAge(user.getAge());
+System.out.println("success get sucess.....");
+return user2;
+    }
+    
 }

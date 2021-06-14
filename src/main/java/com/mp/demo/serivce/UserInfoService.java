@@ -24,4 +24,10 @@ public interface UserInfoService {
 	UserInfoEntity get_By_Id(String id);
 	
     IPage<UserInfoEntity> selectUserInfoByGtFraction(IPage<UserInfoEntity> page,Long fraction);
+    
+    UserInfoEntity insertById(UserInfoEntity user);
+
+    UserInfoEntity updateById2(UserInfoEntity user);
+
+	UserInfoEntity selectByAge(int age);
 }
