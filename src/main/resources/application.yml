@@ -1,13 +1,13 @@
 server:
-  port: 3306
+  port: 8081
 spring:
   # 配置数据源
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/testing01?characterEncoding=latin1&useConfigs=maxPerformance
+    url: jdbc:mysql://localhost:3306/testing01?characterEncoding=latin1&useConfigs=maxPerformance&serverTimezone=UTC
     username: root
     password: password
-    type: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
 # mybatis-plus相关配置
 mybatis-plus:
   # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）

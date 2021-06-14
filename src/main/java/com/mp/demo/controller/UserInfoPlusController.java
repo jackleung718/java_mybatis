@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.mp.demo.entity.UserInfoEntity;
 import com.mp.demo.serivce.UserInfoService;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -78,6 +80,14 @@ public class UserInfoPlusController {
      * @CreateTime 2019/6/9 14:37
      * @Return IPage<UserInfoEntity> 分页数据
      */
+    @RequestMapping("/getById")
+    public UserInfoEntity getById(){
+        //查询大于60分以上的学生,并且分页
+        final UserInfoEntity news = userInfoService.getById("1");
+
+        return news;
+    }
+    
     @RequestMapping("/getInfoListSQL")
     public IPage<UserInfoEntity> getInfoListSQL(){
         //查询大于60分以上的学生,并且分页
