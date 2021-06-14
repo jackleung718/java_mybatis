@@ -1,0 +1,18 @@
+https://www.hangge.com/blog/cache/detail_2908.html
+https://programmer.group/springboot-integrates-mybatis-plus-3.1-detailed-tutorial.html
+
+
+CREATE TABLE `user_info` (
+  `id` bigint(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `name` varchar(32) DEFAULT NULL COMMENT 'Full name',
+  `age` int(11) DEFAULT NULL COMMENT 'Age',
+  `skill` varchar(32) DEFAULT NULL COMMENT 'Skill',
+  `evaluate` varchar(65535) DEFAULT NULL COMMENT 'evaluate',
+  `fraction` bigint(11) DEFAULT NULL COMMENT 'Fraction',
+  'createtime' DATETIME,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COMMENT='Student Information Table';
+
+INSERT INTO `user_info` VALUES (1, 'Xiao Ming', 20, 'draw', 'The student has a certain talent in drawing.', 89);
+INSERT INTO `user_info` VALUES (2, 'Xiaolan', 19, 'Game', 'Recently, the student's score has been lowered because of the game.', 64);
+INSERT INTO `user_info` VALUES (3, 'Zhang Zhang', 18, 'English?', 'The student recently won the second prize in an English competition.', 90);
